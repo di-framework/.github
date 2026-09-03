@@ -9,6 +9,7 @@
 </p>
 
 <p align="center">
+  <a href="https://docs.di-framework.dev"><img src="https://img.shields.io/badge/docs-docs.di--framework.dev-blue.svg" alt="Documentation" /></a>
   <a href="https://github.com/di-framework/di-framework/actions"><img src="https://github.com/di-framework/di-framework/actions/workflows/ci.yml/badge.svg" alt="CI Status" /></a>
   <a href="https://www.npmjs.com/package/@di-framework/core"><img src="https://img.shields.io/npm/v/@di-framework/core.svg" alt="npm version" /></a>
   <a href="https://github.com/di-framework/di-framework/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg" alt="License" /></a>
@@ -30,6 +31,17 @@
 
 ---
 
+## 🗂️ Organization Projects
+
+| Project | Description | Site |
+| :--- | :--- | :--- |
+| [`di-framework`](https://github.com/di-framework/di-framework) | Core monorepo and npm packages | [di-framework.dev](https://di-framework.dev) |
+| [`docs`](https://github.com/di-framework/docs) | Versioned documentation and search | [docs.di-framework.dev](https://docs.di-framework.dev) |
+| [`plugin`](https://github.com/di-framework/plugin) | Agent plugin and MCP server for coding assistants | — |
+| [`di-framework.dev`](https://github.com/di-framework/di-framework.dev) | Landing page Worker | [di-framework.dev](https://di-framework.dev) |
+
+---
+
 ## 📦 Ecosystem Packages
 
 | Package | Description | Version |
@@ -46,6 +58,7 @@
 | [`@di-framework/auth`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-auth) | Sessions, JWT, OAuth2/OIDC, and WebAuthn passkeys on WebCrypto | [![npm](https://img.shields.io/npm/v/@di-framework/auth.svg)](https://www.npmjs.com/package/@di-framework/auth) |
 | [`@di-framework/authz`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-authz) | Resource-level authorization policies, EBNF rules & HTTP bindings | [![npm](https://img.shields.io/npm/v/@di-framework/authz.svg)](https://www.npmjs.com/package/@di-framework/authz) |
 | [`@di-framework/ai`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-ai) | Annotation-driven Chat, Tools, RAG, MCP, and AI Agents | [![npm](https://img.shields.io/npm/v/@di-framework/ai.svg)](https://www.npmjs.com/package/@di-framework/ai) |
+| [`@di-framework/ai-utils`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-ai-utils) | Agent Skills (`SKILL.md`) toolbox (`SkillsAgent.builder`) | [![npm](https://img.shields.io/npm/v/@di-framework/ai-utils.svg)](https://www.npmjs.com/package/@di-framework/ai-utils) |
 | [`@di-framework/repo`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-repo) | Storage-agnostic repository abstractions and standardized data access | [![npm](https://img.shields.io/npm/v/@di-framework/repo.svg)](https://www.npmjs.com/package/@di-framework/repo) |
 | [`@di-framework/codegen`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-codegen) | Contract-driven code generation for typed service interfaces | [![npm](https://img.shields.io/npm/v/@di-framework/codegen.svg)](https://www.npmjs.com/package/@di-framework/codegen) |
 
@@ -54,32 +67,23 @@
 ## 💻 Quick Example
 
 ```typescript
-import { Container, Component } from '@di-framework/core/decorators';
-import { useContainer } from '@di-framework/core/container';
+import { Container, Publisher, Subscriber } from '@di-framework/core/decorators';
 
-// 1. Declare services with @Container()
 @Container()
-export class DatabaseService {
-  query(sql: string) {
-    return [{ id: '1', name: 'di-framework' }];
+class UserService {
+  @Publisher('user.created')
+  createUser(name: string) {
+    return { id: 1, name };
   }
 }
 
-// 2. Inject dependencies with @Component()
 @Container()
-export class UserService {
-  @Component(DatabaseService)
-  private db!: DatabaseService;
-
-  findUsers() {
-    return this.db.query('SELECT * FROM users');
+class AuditService {
+  @Subscriber('user.created')
+  onUserCreated(event: any) {
+    console.log('User created:', event.result);
   }
 }
-
-// 3. Resolve from container
-const container = useContainer();
-const userService = container.resolve(UserService);
-console.log(userService.findUsers());
 ```
 
 ---
@@ -89,7 +93,7 @@ console.log(userService.findUsers());
 Scaffold a new project in seconds using the CLI:
 
 ```bash
-bunx @di-framework/cli init my-app
+bun x @di-framework/cli init my-app
 # or
 npx @di-framework/cli init my-app
 ```
@@ -105,7 +109,9 @@ bun run build
 
 ## 📚 Documentation & Resources
 
-- 📖 **Monorepo Repository**: [github.com/di-framework/di-framework](https://github.com/di-framework/di-framework)
+- 📖 **Documentation**: [docs.di-framework.dev](https://docs.di-framework.dev)
+- 🏠 **Website**: [di-framework.dev](https://di-framework.dev)
+- 📦 **Monorepo Repository**: [github.com/di-framework/di-framework](https://github.com/di-framework/di-framework)
 - 📝 **Migration Guide**: [MIGRATION_GUIDE.md](https://github.com/di-framework/di-framework/blob/main/packages/di-framework-core/MIGRATION_GUIDE.md)
 - 📄 **Packaging Policy**: [PACKAGING.md](https://github.com/di-framework/di-framework/blob/main/PACKAGING.md)
 - 🔒 **Security Policy**: [SECURITY.md](https://github.com/di-framework/di-framework/blob/main/SECURITY.md)
