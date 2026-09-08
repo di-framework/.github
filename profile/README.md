@@ -33,12 +33,15 @@
 
 ## 🗂️ Organization Projects
 
+Public repositories in the organization:
+
 | Project | Description | Site |
 | :--- | :--- | :--- |
 | [`di-framework`](https://github.com/di-framework/di-framework) | Core monorepo and npm packages | [di-framework.dev](https://di-framework.dev) |
+| [`di-framework-kube`](https://github.com/di-framework/kube) | CLI for provisioning isolated Kubesolo clusters with the wasmCloud runtime operator | — |
 | [`docs`](https://github.com/di-framework/docs) | Versioned documentation and search | [docs.di-framework.dev](https://docs.di-framework.dev) |
 | [`plugin`](https://github.com/di-framework/plugin) | Agent plugin and MCP server for coding assistants | — |
-| [`di-framework.dev`](https://github.com/di-framework/di-framework.dev) | Landing page Worker | [di-framework.dev](https://di-framework.dev) |
+| [`.github`](https://github.com/di-framework/.github) | Organization profile and community health defaults | — |
 
 ---
 
@@ -48,6 +51,8 @@
 | :--- | :--- | :--- |
 | [`@di-framework/core`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-core) | Core DI container, decorator metadata, and service resolver | [![npm](https://img.shields.io/npm/v/@di-framework/core.svg)](https://www.npmjs.com/package/@di-framework/core) |
 | [`@di-framework/cli`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cli) | Developer CLI tool (`init`, `check`, `build`, maintainer `mx`) | [![npm](https://img.shields.io/npm/v/@di-framework/cli.svg)](https://www.npmjs.com/package/@di-framework/cli) |
+| [`@di-framework/cli-extension`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cli-extension) | CLI extension authoring API, command types, and manifest contract | [![npm](https://img.shields.io/npm/v/@di-framework/cli-extension.svg)](https://www.npmjs.com/package/@di-framework/cli-extension) |
+| [`@di-framework/cli-plugin-wasmcloud`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cli-plugin-wasmcloud) | CLI extension to build, serve, and deploy apps as wasmCloud WebAssembly components | [![npm](https://img.shields.io/npm/v/@di-framework/cli-plugin-wasmcloud.svg)](https://www.npmjs.com/package/@di-framework/cli-plugin-wasmcloud) |
 | [`@di-framework/tsc`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-tsc) | TypeScript compiler transform (`ttsc`) for emit-time type guards | [![npm](https://img.shields.io/npm/v/@di-framework/tsc.svg)](https://www.npmjs.com/package/@di-framework/tsc) |
 | [`@di-framework/http`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-http) | Type-safe HTTP routing & build-time OpenAPI 3.1 generation | [![npm](https://img.shields.io/npm/v/@di-framework/http.svg)](https://www.npmjs.com/package/@di-framework/http) |
 | [`@di-framework/graphql`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-graphql) | Object-oriented, decorator-driven GraphQL schema generation | [![npm](https://img.shields.io/npm/v/@di-framework/graphql.svg)](https://www.npmjs.com/package/@di-framework/graphql) |
@@ -55,6 +60,7 @@
 | [`@di-framework/socket`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-socket) | Security-first WebCrypto WebSocket, TCP, and UDP communication | [![npm](https://img.shields.io/npm/v/@di-framework/socket.svg)](https://www.npmjs.com/package/@di-framework/socket) |
 | [`@di-framework/rpc`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-rpc) | Decorator-generated JSON-RPC & per-method gRPC with typed clients | [![npm](https://img.shields.io/npm/v/@di-framework/rpc.svg)](https://www.npmjs.com/package/@di-framework/rpc) |
 | [`@di-framework/config`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-config) | Typed, validated configuration injection from env/files | [![npm](https://img.shields.io/npm/v/@di-framework/config.svg)](https://www.npmjs.com/package/@di-framework/config) |
+| [`@di-framework/cloudfoundry`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cloudfoundry) | Cloud Foundry service discovery, application metadata, and automatic DI bindings | [![npm](https://img.shields.io/npm/v/@di-framework/cloudfoundry.svg)](https://www.npmjs.com/package/@di-framework/cloudfoundry) |
 | [`@di-framework/auth`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-auth) | Sessions, JWT, OAuth2/OIDC, and WebAuthn passkeys on WebCrypto | [![npm](https://img.shields.io/npm/v/@di-framework/auth.svg)](https://www.npmjs.com/package/@di-framework/auth) |
 | [`@di-framework/authz`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-authz) | Resource-level authorization policies, EBNF rules & HTTP bindings | [![npm](https://img.shields.io/npm/v/@di-framework/authz.svg)](https://www.npmjs.com/package/@di-framework/authz) |
 | [`@di-framework/ai`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-ai) | Annotation-driven Chat, Tools, RAG, MCP, and AI Agents | [![npm](https://img.shields.io/npm/v/@di-framework/ai.svg)](https://www.npmjs.com/package/@di-framework/ai) |
