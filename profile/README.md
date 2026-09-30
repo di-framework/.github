@@ -38,13 +38,13 @@ Public repositories in the organization:
 | Project | Description | Site |
 | :--- | :--- | :--- |
 | [`di-framework`](https://github.com/di-framework/di-framework) | Core monorepo: DI, HTTP, GraphQL, events, auth, RPC, queues, actors, and the app CLI | [di-framework.dev](https://di-framework.dev) |
-| [`ai`](https://github.com/di-framework/ai) | AI clients, tools, agents, and Agent Skills (`@di-framework/ai`, `@di-framework/ai-utils`) | — |
-| [`platform`](https://github.com/di-framework/platform) | Operated wasmCloud platform: Pulumi installer, guest bindings, and the Cloud Foundry adapter | — |
-| [`cli-extensions`](https://github.com/di-framework/cli-extensions) | Installable command groups (`@di-framework/cli-plugin-platform`) | — |
-| [`examples`](https://github.com/di-framework/examples) | Sample applications for the framework, platform, and adapters | — |
-| [`kube`](https://github.com/di-framework/kube) | CLI for provisioning isolated Kubesolo clusters with the wasmCloud runtime operator | — |
+| [`ai`](https://github.com/di-framework/ai) | AI clients, tools, agents, Agent Skills, and the `di-ml` ONNX fine-tuner (`@di-framework/ai`, `@di-framework/ai-utils`, `@di-framework/ml`) | — |
+| [`platform`](https://github.com/di-framework/platform) | Operated wasmCloud platform: Pulumi installer, guest bindings, SQLite provider, backup, and the Cloud Foundry adapter | — |
+| [`cli-extensions`](https://github.com/di-framework/cli-extensions) | Installable command groups (`@di-framework/cli-plugin-platform`, `@di-framework/cli-plugin-ai`) | — |
+| [`examples`](https://github.com/di-framework/examples) | Sample applications for the framework, platform, adapters, and agents | — |
 | [`docs`](https://github.com/di-framework/docs) | Versioned documentation and search | [docs.di-framework.dev](https://docs.di-framework.dev) |
-| [`plugin`](https://github.com/di-framework/plugin) | Agent plugin and MCP server for coding assistants | — |
+| [`agent-plugin`](https://github.com/di-framework/agent-plugin) | Agent plugin and MCP server for Cursor and Claude Code | — |
+| [`componentize-qjs`](https://github.com/di-framework/componentize-qjs) | JavaScript to WebAssembly components; wasmtime 48 fork of `componentize-qjs` | — |
 | [`.github`](https://github.com/di-framework/.github) | Organization profile and community health defaults | — |
 
 ---
@@ -54,23 +54,28 @@ Public repositories in the organization:
 | Package | Description | Version |
 | :--- | :--- | :--- |
 | [`@di-framework/core`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-core) | Core DI container, decorator metadata, and service resolver | [![npm](https://img.shields.io/npm/v/@di-framework/core.svg)](https://www.npmjs.com/package/@di-framework/core) |
+| [`@di-framework/actors`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-actors) | Local virtual actors and transactional storage | [![npm](https://img.shields.io/npm/v/@di-framework/actors.svg)](https://www.npmjs.com/package/@di-framework/actors) |
 | [`@di-framework/cli`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cli) | Developer CLI tool (`init`, `check`, `build`, maintainer `mx`) | [![npm](https://img.shields.io/npm/v/@di-framework/cli.svg)](https://www.npmjs.com/package/@di-framework/cli) |
 | [`@di-framework/cli-extension`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-cli-extension) | CLI extension authoring API, command types, and manifest contract | [![npm](https://img.shields.io/npm/v/@di-framework/cli-extension.svg)](https://www.npmjs.com/package/@di-framework/cli-extension) |
 | [`@di-framework/cli-plugin-platform`](https://github.com/di-framework/cli-extensions/tree/main/packages/cli-plugin-platform) | CLI extension to build, serve, and deploy apps as wasmCloud WebAssembly components (`di-framework platform`) | [![npm](https://img.shields.io/npm/v/@di-framework/cli-plugin-platform.svg)](https://www.npmjs.com/package/@di-framework/cli-plugin-platform) |
+| [`@di-framework/cli-plugin-ai`](https://github.com/di-framework/cli-extensions/tree/main/packages/cli-plugin-ai) | CLI extension for agent configuration and Agent Skills (`di-framework ai`) | [![npm](https://img.shields.io/npm/v/@di-framework/cli-plugin-ai.svg)](https://www.npmjs.com/package/@di-framework/cli-plugin-ai) |
 | [`@di-framework/platform`](https://github.com/di-framework/platform/tree/main/platform/platform) | Cluster install: Pulumi, CRDs, controller, tenancy, and backing services | [![npm](https://img.shields.io/npm/v/@di-framework/platform.svg)](https://www.npmjs.com/package/@di-framework/platform) |
 | [`@di-framework/bindings`](https://github.com/di-framework/platform/tree/main/platform/bindings) | Application guest bindings and workload metadata. Through 5.x this was `@di-framework/wasmcloud` | [![npm](https://img.shields.io/npm/v/@di-framework/bindings.svg)](https://www.npmjs.com/package/@di-framework/bindings) |
+| [`@di-framework/sqlite-component`](https://github.com/di-framework/platform/tree/main/platform/sqlite-component) | `di-framework:sqlite` provider component for guest persistence | [![npm](https://img.shields.io/npm/v/@di-framework/sqlite-component.svg)](https://www.npmjs.com/package/@di-framework/sqlite-component) |
 | [`@di-framework/tsc`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-tsc) | TypeScript compiler transform (`ttsc`) for emit-time type guards | [![npm](https://img.shields.io/npm/v/@di-framework/tsc.svg)](https://www.npmjs.com/package/@di-framework/tsc) |
 | [`@di-framework/http`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-http) | Type-safe HTTP routing & build-time OpenAPI 3.1 generation | [![npm](https://img.shields.io/npm/v/@di-framework/http.svg)](https://www.npmjs.com/package/@di-framework/http) |
 | [`@di-framework/graphql`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-graphql) | Object-oriented, decorator-driven GraphQL schema generation | [![npm](https://img.shields.io/npm/v/@di-framework/graphql.svg)](https://www.npmjs.com/package/@di-framework/graphql) |
 | [`@di-framework/events`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-events) | Event bus bridging `@Publisher`/`@Subscriber` to Kafka, NATS, Memory | [![npm](https://img.shields.io/npm/v/@di-framework/events.svg)](https://www.npmjs.com/package/@di-framework/events) |
+| [`@di-framework/queues`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-queues) | Durable job queues with local development and wasmCloud integration | [![npm](https://img.shields.io/npm/v/@di-framework/queues.svg)](https://www.npmjs.com/package/@di-framework/queues) |
 | [`@di-framework/socket`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-socket) | Security-first WebCrypto WebSocket, TCP, and UDP communication | [![npm](https://img.shields.io/npm/v/@di-framework/socket.svg)](https://www.npmjs.com/package/@di-framework/socket) |
 | [`@di-framework/rpc`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-rpc) | Decorator-generated JSON-RPC & per-method gRPC with typed clients | [![npm](https://img.shields.io/npm/v/@di-framework/rpc.svg)](https://www.npmjs.com/package/@di-framework/rpc) |
 | [`@di-framework/config`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-config) | Typed, validated configuration injection from env/files | [![npm](https://img.shields.io/npm/v/@di-framework/config.svg)](https://www.npmjs.com/package/@di-framework/config) |
 | [`@di-framework/cloudfoundry`](https://github.com/di-framework/platform/tree/main/adapters/cloudfoundry) | Cloud Foundry service discovery, application metadata, and automatic DI bindings | [![npm](https://img.shields.io/npm/v/@di-framework/cloudfoundry.svg)](https://www.npmjs.com/package/@di-framework/cloudfoundry) |
 | [`@di-framework/auth`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-auth) | Sessions, JWT, OAuth2/OIDC, and WebAuthn passkeys on WebCrypto | [![npm](https://img.shields.io/npm/v/@di-framework/auth.svg)](https://www.npmjs.com/package/@di-framework/auth) |
 | [`@di-framework/authz`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-authz) | Resource-level authorization policies, EBNF rules & HTTP bindings | [![npm](https://img.shields.io/npm/v/@di-framework/authz.svg)](https://www.npmjs.com/package/@di-framework/authz) |
-| [`@di-framework/ai`](https://github.com/di-framework/ai/tree/main/ai) | Annotation-driven Chat, Tools, RAG, MCP, and AI Agents | [![npm](https://img.shields.io/npm/v/@di-framework/ai.svg)](https://www.npmjs.com/package/@di-framework/ai) |
-| [`@di-framework/ai-utils`](https://github.com/di-framework/ai/tree/main/ai-utils) | Agent Skills (`SKILL.md`) toolbox (`SkillsAgent.builder`) | [![npm](https://img.shields.io/npm/v/@di-framework/ai-utils.svg)](https://www.npmjs.com/package/@di-framework/ai-utils) |
+| [`@di-framework/ai`](https://github.com/di-framework/ai/tree/main/packages/ai) | Annotation-driven Chat, Tools, RAG, MCP, and AI Agents | [![npm](https://img.shields.io/npm/v/@di-framework/ai.svg)](https://www.npmjs.com/package/@di-framework/ai) |
+| [`@di-framework/ai-utils`](https://github.com/di-framework/ai/tree/main/packages/ai-utils) | Agent Skills (`SKILL.md`) toolbox (`SkillsAgent.builder`) | [![npm](https://img.shields.io/npm/v/@di-framework/ai-utils.svg)](https://www.npmjs.com/package/@di-framework/ai-utils) |
+| [`@di-framework/ml`](https://github.com/di-framework/ai/tree/main/packages/ml) | ONNX session for a `di-ml` checkpoint; the fine-tune CLI ships as platform-specific prereleases | [![npm](https://img.shields.io/npm/v/@di-framework/ml.svg)](https://www.npmjs.com/package/@di-framework/ml) |
 | [`@di-framework/repo`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-repo) | Storage-agnostic repository abstractions and standardized data access | [![npm](https://img.shields.io/npm/v/@di-framework/repo.svg)](https://www.npmjs.com/package/@di-framework/repo) |
 | [`@di-framework/codegen`](https://github.com/di-framework/di-framework/tree/main/packages/di-framework-codegen) | Contract-driven code generation for typed service interfaces | [![npm](https://img.shields.io/npm/v/@di-framework/codegen.svg)](https://www.npmjs.com/package/@di-framework/codegen) |
 
@@ -201,7 +206,7 @@ console.log(reply.content);
 
 Skills expose descriptions first and load their full instructions when activated. The default toolbox includes file-reading tools; writing, editing, and shell execution are opt-in.
 
-See the [AI usage guide](https://github.com/di-framework/ai#readme), [AI package documentation](https://github.com/di-framework/ai/blob/main/ai/README.md), and [skills and utilities documentation](https://github.com/di-framework/ai/blob/main/ai-utils/README.md) for more examples. The `di-framework agent` and `di-framework skills` CLI commands remain in the [core monorepo](https://github.com/di-framework/di-framework).
+See the [AI usage guide](https://github.com/di-framework/ai#readme), [AI package documentation](https://github.com/di-framework/ai/blob/main/packages/ai/README.md), and [skills and utilities documentation](https://github.com/di-framework/ai/blob/main/packages/ai-utils/README.md) for more examples. Agent and skills commands ship in [`@di-framework/cli-plugin-ai`](https://github.com/di-framework/cli-extensions/tree/main/packages/cli-plugin-ai) (`di-framework extensions install ai`).
 
 ---
 
@@ -211,7 +216,6 @@ See the [AI usage guide](https://github.com/di-framework/ai#readme), [AI package
 - 🏠 **Website**: [di-framework.dev](https://di-framework.dev)
 - 📦 **Monorepo Repository**: [github.com/di-framework/di-framework](https://github.com/di-framework/di-framework)
 - 📝 **Migration Guide**: [MIGRATION_GUIDE.md](https://github.com/di-framework/di-framework/blob/main/packages/di-framework-core/MIGRATION_GUIDE.md)
-- 📄 **Packaging Policy**: [PACKAGING.md](https://github.com/di-framework/di-framework/blob/main/PACKAGING.md)
 - 🔒 **Security Policy**: [SECURITY.md](https://github.com/di-framework/di-framework/blob/main/SECURITY.md)
 
 ---
